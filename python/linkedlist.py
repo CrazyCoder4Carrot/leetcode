@@ -29,6 +29,17 @@ class Linkedlist(object):
 			cur.set_next(node)
 		else:
 			self.head = node
+	def remove(self, data):
+		if self.head.get_data() == data:
+			self.head = self.head.get_next()
+		else:
+			cur = self.head
+			while cur:
+				pre = cur
+				cur = cur.get_next()
+				if cur.get_data() == data:
+					pre.set_next(cur.get_next())
+					return
 
 	def search(self, data):
 		cur = self.head
@@ -43,9 +54,11 @@ class Linkedlist(object):
 			print cur.get_data()
 			cur = cur.get_next()
 
+
 linkedlist = Linkedlist()
 for i in range(100):
 	node = Node(i)
 	linkedlist.insert_tail(node)
-print linkedlist.printall()
-#linkedlist.printall()
+linkedlist.printall()
+linkedlist.remove(99)
+linkedlist.printall()
