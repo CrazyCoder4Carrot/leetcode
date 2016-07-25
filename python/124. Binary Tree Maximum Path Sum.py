@@ -21,8 +21,7 @@ class Solution(object):
             return 0
         left = self.helper(root.left)
         right = self.helper(root.right)
-        left = 0 if not left else (left if left > 0 else 0)
-        right = 0 if not right else (right if right > 0 else 0)
+        left = left if left > 0 else 0
+        right = right if right > 0 else 0
         self.cur_max = max(left + right + root.val, self.cur_max)
         return max(left, right) + root.val
-    
