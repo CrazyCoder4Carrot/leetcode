@@ -11,5 +11,5 @@ class Solution(object):
                 m = n + 1
                 while m in nums:
                     m += 1
-                best = max(best, m-nm)
+                best = max(best, m-n)
         return best
