@@ -27,7 +27,7 @@ class RandomizedSet(object):
             idx, last = self.pos[val], self.nums[-1]
             self.nums[idx], self.pos[last] = last, idx
             self.nums.pop()
-            self.pos.pop(val, 0)
+            del self.pos[val]
             return True
         return False
             
