@@ -26,3 +26,11 @@ class Solution(object):
                 if wordslen * wordlen == j + wordlen - head:
                     res.append(head)
         return res
+
+
+
+
+
+
+
+        
