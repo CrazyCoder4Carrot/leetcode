@@ -23,5 +23,7 @@ class Solution(object):
         Returns a random shuffling of the array.
         :rtype: List[int]
         """
-        random.shuffle(self.temp)
+        for i in range(len(self.original)):
+            j = random.randint(i)
+            self.temp[i], self.temp[j] = self.temp[j], self.temp[i]
         return self.temp
