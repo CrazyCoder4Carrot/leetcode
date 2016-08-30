@@ -7,7 +7,9 @@ class Solution(object):
         """
         pre, suc = collections.defaultdict(set), collections.defaultdict(set)
         for pair in zip(words, words[1:]):
+            print pair
             for a, b in zip(*pair):
+                print a, b
                 if a != b:
                     suc[a].add(b)
                     pre[b].add(a)
@@ -23,4 +25,6 @@ class Solution(object):
                 if not pre[b]:
                     free.add(b)
         return order * (set(order) == chars)
-        
+sol = Solution()
+temp = ["wrt","wrf","er","ett","rftt"]
+sol.alienOrder(temp)
