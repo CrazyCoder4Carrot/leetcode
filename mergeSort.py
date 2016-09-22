@@ -4,6 +4,7 @@ class Solution:
     def sortIntegers2(self, A):
         # Write your code here
         res = self.mergeSort(A)
+        return res
     def mergeSort(self, A):
         length = len(A)
         if length <= 1:
