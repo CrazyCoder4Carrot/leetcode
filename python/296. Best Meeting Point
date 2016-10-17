@@ -1,0 +1,22 @@
+class Solution(object):
+    def minTotalDistance(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        if not grid:
+            return 0
+        x, y = [], []
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == 1:
+                    x.append(i)
+                    y.append(j)
+        x.sort()
+        y.sort()
+        medianx, mediany = x[len(x) / 2], y[len(y)/2]
+        res = 0
+        for i in range(len(x)):
+            res += abs(x[i] - medianx) + abs(y[i] - mediany)
+        return res
+                    
