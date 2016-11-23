@@ -29,6 +29,6 @@ class Solution(object):
         			graph[y].remove(x)
         		del graph[x]
         		vetex.remove(x)
-       	return list(vetex)
+       	return list(vetex) if n != 1  else [0]
 sol = Solution()
 print sol.findMinHeightTrees(4,[[1,0],[1,2],[1,3]])
