@@ -18,40 +18,19 @@ class Solution(object):
             return l1
         dummyhead = ListNode(0)
         ptr = dummyhead
-        p1 = l1 
+        p1 = l1
         p2 = l2
-        carry = 0
-        while p1 and p2:
-            val = p1.val + p2.val + carry
-            if val >= 10:
-                val = val % 10
-                carry = 1
-            else:
-                carry = 0
+        carry, val = 0, 0
+        while p1 or p2:
+            val1 = p1.val if p1 else 0
+            val2 = p2.val if p2 else 0
+            val = val1 + val2 + carry
+            carry = 1 if val >= 10 else 0
+            val %= 10
             ptr.next = ListNode(val)
             ptr = ptr.next
-            p1 = p1.next
-            p2 = p2.next
-        while p1:
-            val = p1.val + carry
-            if val >= 10:
-                val = val % 10
-                carry = 1
-            else:
-                carry = 0
-            ptr.next = ListNode(val)
-            ptr = ptr.next
-            p1 = p1.next
-        while p2:
-            val = p2.val + carry
-            if val >= 10:
-                val = val % 10
-                carry = 1
-            else:
-                carry = 0
-            ptr.next = ListNode(val)
-            ptr = ptr.next
-            p2 = p2.next
+            p1 = p1.next if p1 else None
+            p2 = p2.next if p2 else None
         if carry:
             ptr.next = ListNode(carry)
         return dummyhead.next
