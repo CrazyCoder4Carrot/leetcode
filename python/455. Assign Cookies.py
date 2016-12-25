@@ -13,11 +13,9 @@ class Solution(object):
             if g[i] <= s[j]:
                 i += 1
                 j += 1
-                count += 1
-                continue
-            if g[i] > s[j]:
+            else:
+                g[i] > s[j]
                 j+= 1
-                continue
-        return count
+        return i
                 
                 
