@@ -5,25 +5,45 @@ class Solution(object):
         :type abbr: str
         :rtype: bool
         """
-        i = j = 0
-        while i < len(word) and j < len(abbr):
-            if word[i] == abbr[j]:
+        temp = 0
+        digit = ""
+        count, i = 0, 0
+        flag = False
+        while i < len(abbr):
+            if abbr[i].isalpha():
+                if flag:
+                    temp = temp << int(digit)
+                    flag = False
+                    digit = ""
+                temp = (temp << 1) | 1
                 i += 1
-                j += 1
-            else:
-                if abbr[j].isdigit():
-                    res = ""
-                    while j < len(abbr) and abbr[j].isdigit():
-                        res = res + abbr[j]
-                        j += 1
-                    res = int(res)
-                    print res
-                    i = i + res
-                else:
-                    return False
-        print i , len(word), j, len(abbr)
-        return i == len(word)
-sol = Solution()
-s = "internationalization"
-abbr = "i12iz4n"
-print sol.validWordAbbreviation(s, abbr)
+            while i < len(abbr) and (abbr[i].isdigit()):
+                flag = True
+                digit += abbr[i]
+                i += 1
+        if flag:
+            temp = temp << int(digit)
+        print bin(temp)
+
+        if temp > (1 << len(word)):
+            return False
+        count, i = 0, 0
+        res = ""
+        flag = False
+        length = len(word)
+        while i < length:
+            if temp & (1 << i):
+                if flag:
+                    res = str(count) + res
+                    count = 0
+                    flag = False
+                res = word[length - i - 1] + res
+                i += 1
+            while i < length and ((temp & 1 << i) == 0):
+                flag = True
+                count += 1
+                i += 1
+        if flag:
+            res = str(count) + res
+        print res
+        return res == abbr
