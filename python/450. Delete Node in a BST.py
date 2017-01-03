@@ -5,6 +5,7 @@
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
     def deleteNode(self, root, key):
         """
@@ -17,7 +18,7 @@ class Solution(object):
             while cur.left:
                 cur = cur.left
             return cur
-            
+
         if not root:
             return root
         if key < root.val:
@@ -37,7 +38,3 @@ class Solution(object):
             root.val = temp.val
             root.right = self.deleteNode(root.right, temp.val)
         return root
-                    
-
-                
-            
