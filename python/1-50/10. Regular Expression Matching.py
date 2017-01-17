@@ -6,26 +6,18 @@ class Solution(object):
         :type p: str
         :rtype: bool
         """
-        def helper(s, p):
-            if not p and not s:
+        def helper(s, p, s_index, p_index):
+            if s_index == -1 and p_index == -1:
                 return True
-            if not s and p:
-                if len(p) > 1 and p[1] == "*":
-                    return helper(s, p[2:])
-                else:
-                    return False
-            if not p and s:
+            if p_index == -1 and s_index != -1:
                 return False
-            if p[0] == s[0] or p[0] == ".":
-                if len(p) > 1 and p[1] == "*":
-                    return helper(s[1:], p) or helper(s, p[2:])
-                else:
-                    return helper(s[1:], p[1:])
-            else:
-                if len(p) > 1 and p[1] == "*":
-                    return helper(s, p[2:])
+            if p_index != -1 and s_index == -1:
+                if p_index >= 2 and p[p_index - 1] == "*":
+                    return helper(s, p, s_index, p_index - 2)
                 else:
                     return False
-        return helper(s, p)
+            
+        return helper(s, p, len(s) - 1, len(p) - 1)
 
-
+sol = Solution()
+print sol.isMatch("aa", "a")
