@@ -6,24 +6,23 @@
 #         self.right = None
 #         self.next = None
 
+
 class Solution:
     # @param root, a tree link node
     # @return nothing
-    def connect(self, root):
-        if not root:
+    def connect(self, node):
+        if not node:
             return
-        level = [root]
-        while level:
-            temp = []
-            for node in level:
-                if node.left:
-                    temp.append(node.left)
-                if node.right:
-                    temp.append(node.right)
-            if temp:
-                pre = temp[0]
-            for node in temp[1:]:
-                pre.next = node
-                pre = node
-            level = temp
-        
+        tail = dummy = TreeLinkNode(0)
+        while node:
+            if node.left:
+                tail.next = node.left
+                tail = tail.next
+            if node.right:
+                tail.next = node.right
+                tail = tail.next
+            node = node.next
+            if not node:
+                tail = dummy
+                node = dummy.next
+                dummy.next = None
