@@ -6,22 +6,27 @@ class Solution(object):
         :rtype: List[str]
         """
         routes = collections.defaultdict(list)
-        for s, e in tickets:
+        visited = collections.defaultdict(int)
+        for s, e in sorted(tickets):
             routes[s].append(e)
-        def solve(start):
-            left, right = [], []
-            for end in sorted(routes[start]):
-                if end not in routes[start]:
-                    continue
-                routes[start].remove(end)
-                subroutes = solve(end)
-                if start in subroutes:
-                    left += subroutes
-                else:
-                    right += subroutes
-            return [start] + left + right
-        return solve("JFK")
+            visited[(s, e)] += 1
+        n = len(tickets) + 1
+        self.path = ['JFK']
+        def dfs(cur, n):
+            if len(self.path) == n:
+                return True
+            for end in routes[cur]:
+                if visited[(cur, end)] > 0:
+                    visited[(cur, end)] -= 1
+                    self.path.append(end)
+                    if dfs(end, n):
+                        return True
+                    self.path = self.path[:-1]
+                    visited[(cur, end)] += 1
+        dfs("JFK", n)
+        return self.path
 
-tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
+
+tickets = [["EZE","AXA"],["TIA","ANU"],["ANU","JFK"],["JFK","ANU"],["ANU","EZE"],["TIA","ANU"],["AXA","TIA"],["TIA","JFK"],["ANU","TIA"],["JFK","TIA"]]
 sol = Solution()
-sol.findItinerary(tickets)
+print sol.findItinerary(tickets)
