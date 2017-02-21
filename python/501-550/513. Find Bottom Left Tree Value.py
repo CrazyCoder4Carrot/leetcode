@@ -12,18 +12,16 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        def helper(root, depth, left):
-            if not root:
-                return 0, 0
-            if not root.left and not root.right:
-                return root.val, depth
-            lval, ldepth = helper(root.left, depth + 1)
-            if not root.right:
-                return lval, ldepth
-            else:
-                rval, rdepth = helper(root.right.left, depth + 2)
-                if ldepth > rdepth:
-                    return lval, ldepth
-                else:
-                    return rval, rdepth
-        return helper(root, 0)[0]
+        level = [root]
+        leftmost = root.val
+        while level:
+            temp = []
+            for node in level:
+                if node.left:
+                    temp.append(node.left)
+                if node.right:
+                    temp.append(node.right)
+            if temp:
+                leftmost = temp[0].val
+            level = temp
+        return leftmost
