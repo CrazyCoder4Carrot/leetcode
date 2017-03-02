@@ -8,8 +8,6 @@ class Solution
 public:
         int reverse(int x)
         {
-                if (!x)
-                        return 0;
                 int flag = 1;
                 if (x < 0) {
                         flag = -1;
