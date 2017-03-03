@@ -9,8 +9,10 @@ public:
     int threeSumClosest(vector<int>& nums, int target)
     {
         sort(nums.begin(), nums.end());
-        int res = INT_MAX;
-        for (int i = 0; i < nums.size() - 2;)
+        if(nums.size() < 3)
+            return -1;
+        int res = nums[0] + nums[1] + nums[2];
+        for (int i = 0; i < nums.size() - 2; i++)
         {
             int low = i + 1;
             int high = nums.size() - 1;
@@ -19,43 +21,13 @@ public:
                 if (abs(temp - target) < abs(res - target))
                     res = temp;
                 if (temp < target)
-                {
-                    do {
-                        low++;
-                    } while (low < high && nums[low] == nums[low-1]);
-                }
+                    low++;
                 if (temp > target)
-                {
-                    do{
-                        high--;
-                    }while( low < high && nums[high] == nums[high + 1]);
-                }
+                    high--;
                 if(temp == target)
-                {
-                    res = temp;
-                    do {
-                        low++;
-                    } while (low < high && nums[low] == nums[low-1]);
-                    do{
-                        high--;
-                    }while( low < high && nums[high] == nums[high + 1]);
-                }
+                    return temp;
             }
-            do{
-                i++;
-            }while(i < nums.size() - 2 && nums[i] == nums[i-1]);
         }
         return res;
     }
 };
-
-int main()
-{
-    Solution sol;
-    std::vector<int> v;
-    v.push_back(0);
-    v.push_back(2);
-    v.push_back(1);
-    v.push_back(-3);
-    cout<<sol.threeSumClosest(v, 1)<<endl;
-}
