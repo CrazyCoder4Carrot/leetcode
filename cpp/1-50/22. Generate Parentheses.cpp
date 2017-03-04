@@ -10,7 +10,7 @@ public:
         if(left == 0 && right == 0)
         {
         	res.push_back(path);
-        	return
+        	return;
         }
         if(left > 0)
         	helper(path + "(", res, left - 1, right);
