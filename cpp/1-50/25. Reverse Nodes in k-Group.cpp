@@ -23,13 +23,11 @@ public:
 			ListNode *start = left->next;
 			while (temp && left && end)
 			{
-				cout << temp << " " << end->val << endl;
 				end = end->next;
 				temp--;
 			}
 			if (end == NULL && temp >= 0)
 				break;
-			cout << temp << " " << endl;
 			ListNode *right = end->next;
 			end->next = NULL;
 			reverse(start);
@@ -39,13 +37,6 @@ public:
 				break;
 			left = start;
 			end = left;
-			ListNode *ptr = dummyhead;
-			while(ptr)
-			{
-				cout<<ptr->val<<" ";
-				ptr = ptr->next;
-			}
-			cout<<"/n"<<endl;
 		}
 		return dummyhead->next;
 	}
