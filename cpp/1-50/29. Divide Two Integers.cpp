@@ -14,8 +14,10 @@ public:
 			flag = !flag;
 			divisor = -divisor;
 		}
+		if(dividend < divisor)
+			return 0;
 		long res = 0;
-		while(dividend != 0  || dividend >= divisor){
+		while(dividend > 0 || dividend >= divisor){
 			long temp = 1;
 			long div = divisor;
 			while(div < dividend){

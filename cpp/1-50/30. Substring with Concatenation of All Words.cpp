@@ -2,7 +2,7 @@ class Solution {
 public:
 	vector<int> findSubstring(string s, vector<string>& words) {
 		vector<int> res;
-		map<string, bool> dict;
+		map<string, int> dict;
 		if (words.empty())
 			return res;
 		int word_size = words[0].size();

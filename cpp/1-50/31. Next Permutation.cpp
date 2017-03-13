@@ -13,9 +13,9 @@ public:
 			return;
 		}
 		int j = nums.size() - 1;
-		for(;j >= i; j--)
+		for (; j >= i; j--)
 		{
-			if(nums[j] > nums[i])
+			if (nums[j] > nums[i])
 				break;
 		}
 		swap(nums[i], nums[j]);
