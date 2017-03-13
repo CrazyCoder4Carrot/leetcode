@@ -16,6 +16,11 @@ public:
 				slow++;
 				nums[slow] = nums[i];
 			}
+			else
+			{
+				if (key > nums[i])
+					break;
+			}
 		}
 		return slow + 1;
 	}
