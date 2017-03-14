@@ -20,7 +20,7 @@ public:
             else
                 high = mid - 1;
         }
-        return nums[low] == target ? low: -1;
+        return (low < nums.size() && nums[low] == target) ? low: -1;
     }
     int serachRight(vector<int>& nums, int target)
     {
@@ -32,6 +32,6 @@ public:
             else
                 low = mid + 1;
         }
-        return nums[high] == target? high: -1;
+        return (high >= 0 && nums[high] == target)? high: -1;
     }
 };
