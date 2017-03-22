@@ -25,12 +25,12 @@ public:
 			}
 			else
 			{
-				vector<int> slots(row.size(), blankcnt / (row.size() - 1));
 				int blankcnt = maxWidth - length + (row.size() - 1);
+				vector<int> slots(row.size(), blankcnt / (row.size() - 1));
 				if (i == words.size()) {
-					for(int k = 0; k < slots.size() - 1; k++)
+					for (int k = 0; k < slots.size(); k++)
 						slots[k] = 1;
-					slots[slots.size() - 1] += blankcnt  - (row.size() - 1);
+					slots[slots.size() - 1] += blankcnt  - row.size();
 				}
 				else {
 					slots[slots.size() - 1] = 0;
