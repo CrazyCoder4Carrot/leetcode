@@ -23,7 +23,7 @@ public:
 			n_num = 0;
 			for (; s[i] <= '9' && s[i] >= '0'; i++, n_num++) {}
 			if (n_num < 1)
-				return false
+				return false;
 			}
 		return s[i] == 0;
 	}
