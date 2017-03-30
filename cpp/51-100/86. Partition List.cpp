@@ -11,21 +11,22 @@ public:
 	ListNode* partition(ListNode* head, int x) {
 		ListNode *dummyhead1 = new ListNode(0);
 		ListNode *dummyhead2 = new ListNode(0);
-		ListNode *p2 = dummyhead1;
-		ListNode *p3 = dummyhead2;
+		ListNode *p1 = dummyhead1;
+		ListNode *p2 = dummyhead2;
 		while(head){
-			int val = p1->next->val;
+			int val = head->val;
 			if(val < x){
-				p2->next = new ListNode(val);
-				p2 = p2->next;
+				p1->next = head;
+				p1 = p1->next;
 			}
 			else{
-				p3->next = new ListNode(val);
-				p3 = p3->next;
+				p2->next = head;
+				p2 = p2->next;
 			}
 			head = head->next;
 		}
-		p2->next = dummyhead2->next;
+		p1->next = dummyhead2->next;
+		p2->next = NULL;
 		return dummyhead1->next;
 	}
 };

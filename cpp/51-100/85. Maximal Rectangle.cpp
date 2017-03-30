@@ -23,10 +23,10 @@ public:
 		heights.push_back(0);
 		int res = 0;
 		for(int i = 0; i < heights.size(); i++){
-			if(st.empty() || heights[st.top()] > heights[i])
+			if(st.empty() || heights[st.top()] < heights[i])
 				st.push(i);
 			else{
-				while(!st.empty() && heights[st.top()] <= heights[i]){
+				while(!st.empty() && heights[st.top()] >= heights[i]){
 					int h = heights[st.top()];
 					st.pop();
 					int w = st.empty()? i: (i - st.top() - 1);
