@@ -14,9 +14,11 @@ public:
             return true;
         return helper(root, NULL, NULL);
     }
-    bool helper(TreeNode *node, int pre){
+    bool helper(TreeNode *node, TreeNode *low, TreeNode *high){
         if(!node)
             return true;
-        if()
+        if(low && low->val >= node->val || (high && high->val <= node->val))
+            return false;
+        return helper(node->left, low, node) & helper(node->right, node, high);
     }
 };
