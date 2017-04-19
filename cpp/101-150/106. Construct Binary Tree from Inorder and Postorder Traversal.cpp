@@ -30,7 +30,7 @@ public:
 		}
 		int left_len = i - istart;
 		root->left = helper(inorder, istart, i - 1, postorder, pstart, pstart + left_len - 1);
-		root->right = helper(inorder, i + 1, iend, postorder, pstart + left_len, end - 1);
+		root->right = helper(inorder, i + 1, iend, postorder, pstart + left_len, pend - 1);
 		return root;
 	}
 };
