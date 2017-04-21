@@ -21,7 +21,7 @@ public:
 		root->left = NULL;
 		root->right = left;
 		TreeNode *temp = root;
-		while (temp > right)
+		while (temp -> right)
 			temp = temp->right;
 		temp->right = right;
 	}
