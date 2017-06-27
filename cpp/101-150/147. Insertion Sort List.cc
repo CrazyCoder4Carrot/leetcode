@@ -31,6 +31,8 @@ public:
                 ptr = ptr->next;
             }
         }
-        return dummyhead->next;
+        ListNode *res = dummyhead->next;
+        delete dummyhead;
+        return res;
     }
 };
