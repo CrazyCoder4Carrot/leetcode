@@ -13,12 +13,18 @@ public:
     	vector<int> res;
     	stack<TreeNode *> s;
     	TreeNode *p = root;
-    	while(stack.size() || p != NULL){
+    	while(s.size() || p != NULL){
     		if(p != NULL){
-    			stack.push(p);
+    			s.push(p);
     			res.insert(res.begin(), p->val);
     			p = p->right;
     		}
+    		else{
+    			TreeNode *node = s.top();
+    			s.pop();
+    			p = node->left;
+    		}
     	}
+    	return res;
     }
 };
