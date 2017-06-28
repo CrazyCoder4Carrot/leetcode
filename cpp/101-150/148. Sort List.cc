@@ -14,7 +14,7 @@ public:
     ListNode *mergeSort(ListNode *head){
     	if(!head || !head->next)
     		return head;
-    	ListNode *dummyhead = ListNode(0);
+    	ListNode *dummyhead = new ListNode(0);
     	dummyhead->next = head;
     	ListNode *slow = dummyhead, *fast = dummyhead;
     	while(fast && fast->next){
@@ -33,7 +33,7 @@ public:
     	ListNode *ptr = dummyhead;
     	while(l1 && l2){
     		if(l1->val < l2->val){
-    			ptr->next = l1;
+    			ptr->next = l1; 
     			l1 = l1->next;
     		}
     		else{
