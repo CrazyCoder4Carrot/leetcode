@@ -26,7 +26,7 @@ public:
         int res = 0;
         for (int i = 0; i < points.size(); i++) {
             int overlap = 0, curmax = 0;
-            unordered_map<pair<int, int>, int> k_count;
+            map<pair<int, int>, int> k_count;
             for (int j = i + 1; j < points.size(); j++) {
                 int dx = points[j].x - points[i].x;
                 int dy = points[j].y - points[i].y;
@@ -35,7 +35,7 @@ public:
                     continue;
                 }
                 int dvs = gcd(dx, dy);
-                pair<int, int> k = make_pair(dx / dvs, dy / dvs);
+                pair<int, int> k(dx / dvs, dy / dvs);
                 if (k_count.find(k) == k_count.end()) {
                     k_count[k] = 1;
                 }
