@@ -29,6 +29,9 @@ public:
 					res[i][j] += res[i][j - 1];
 			}
 		}
-		return res[obstacleGrid.size()][obstacleGrid[0].size()];
+		if(obstacleGrid[m-1][n-1] != 1)
+			return res[obstacleGrid.size()][obstacleGrid[0].size()];
+		else
+			return 0;
 	}
 };
