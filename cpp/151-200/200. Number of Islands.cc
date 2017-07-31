@@ -24,7 +24,7 @@ public:
         while (!q.empty()) {
             pair<int, int> p = q.front();
             q.pop();
-            int x, y = p.first, p.last;
+            int x = p.first, y = p.second;
             if(x < 0 || x >= grid.size() || y < 0 || y >= grid[0].size() || grid[x][y] == '0')
             	continue;
             grid[x][y] = '0';
