@@ -12,8 +12,7 @@ public:
             vector<bool> visited(numCourses, false);
             nocycle = dfs(i, graph, visited, onpath);
             if (!nocycle){
-                res.erase(res.begin(), res.end());
-                return res;
+            	return {};
             }
         }
         return res;
