@@ -15,10 +15,8 @@ public:
 
     int minMutation(string start, string end, vector<string>& bank) {
         dfs(0, start, end, 0, bank);
-        if (minmove == INT_MAX)
-            return -1;
-        else
-            return minmove;
+        minmove = (minmove == INT_MAX)? -1: minmove;
+        return minmove;
     }
     void dfs(int index, string cur, string end, int mvCnt, vector<string> &bank) {
         if (cur == end) {
