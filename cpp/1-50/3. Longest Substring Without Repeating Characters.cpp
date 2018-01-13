@@ -1,27 +1,18 @@
-#include <iostream>
-#include <string>
-using namespace std;
-
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
+        vector<int> flags(256, -1);
+        if(s.empty())
+            return 0;
+        int res = 1;
         int start = -1;
-        int maxlen = 0;
-        vector<int> dict(256, -1);
-        for(int i = 0; i < s.length(); i++){
-            if(dict[s[i]] > start){
-                start = dict[s[i]];
+        for(int i = 0; i < s.size(); i++){
+            if(flags[s[i]] > start){
+                start = flags[s[i]];
             }
-            dict[s[i]] = i;
-            maxlen = max(maxlen, i - start);
+            res = max(res, i - start);
+            flags[s[i]] = i;
         }
-        return maxlen;
+        return res;
     }
 };
-
-int main()
-{
-    string s = "tmmzuxt";
-    Solution *sol = new Solution();
-    sol->lengthOfLongestSubstring(s);
-}
