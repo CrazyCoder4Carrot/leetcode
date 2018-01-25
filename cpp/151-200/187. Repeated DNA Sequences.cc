@@ -26,8 +26,7 @@ public:
             if (i >= 9) {
                 if (i >= 10)
                     tmp = tmp & 0xfffff;
-                cnt[tmp]++;
-                if (cnt[tmp] == 2)
+                if (cnt[tmp]++ == 1)
                     res.push_back(s.substr(i - 9, 10));
             }
         }
