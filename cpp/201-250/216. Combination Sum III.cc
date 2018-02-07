@@ -1,6 +1,7 @@
 class Solution {
 private:
-    vector<vector<int>> res, nums;
+    vector<vector<int>> res;
+    vector<int> nums;
     int n;
     int k;
 public:
@@ -9,6 +10,7 @@ public:
             return;
         if(level == k && sum == n){
             res.push_back(path);
+            return;
         }
         for(int i = idx; i < 9; i++){
             path.push_back(nums[i]);
@@ -20,7 +22,7 @@ public:
     vector<vector<int>> combinationSum3(int k, int n) {      
         this->n = n;
         this->k = k;
-        vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         vector<int> path;
         dfs(0, path, 0, 0);
         return res;
